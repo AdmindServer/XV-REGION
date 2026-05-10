@@ -374,7 +374,24 @@ menuBox.style.display=="block"?"none":"block";
 
 // LOGIN
 function login(){
+// DEVICE LOCK
+let activeUser =
+localStorage.getItem(
+"activeUser"
+);
 
+if(
+activeUser &&
+activeUser !== u
+){
+
+ alert(
+ "User login di perangkat lain"
+ );
+
+ return;
+
+}
 let u = document.getElementById("user").value.trim();
 let p = document.getElementById("pass").value.trim();
 
@@ -395,6 +412,11 @@ return;
 localStorage.setItem("user", u);
 
 document.getElementById("loginBox").style.display = "none";
+// SIMPAN USER LOGIN
+localStorage.setItem(
+"activeUser",
+u
+);
 document.getElementById("panel").style.display = "block";
 
 document.getElementById("welcome").innerText = "Halo, " + u;
@@ -404,8 +426,11 @@ updateStatus();
 // LOGOUT
 function logout(){
 localStorage.removeItem("user");
+localStorage.removeItem(
+"activeUser"
+);
+
 location.reload();
-}
 
 // BUY
 function buyAkses(){
