@@ -1191,13 +1191,13 @@ vid.volume = 1;
 
 vid.play();
 
-// CLOSE OPENING
-setTimeout(()=>{
+// TUNGGU VIDEO SELESAI
+vid.onended = ()=>{
 
  ov.style.display="none";
 
-},7000);
-
+};
+ 
  document.getElementById("home").style.display="block";
 
  // tampil nama
