@@ -737,26 +737,30 @@ let currentAyat = 0;
 async function loadQuran(){
  let s = document.getElementById("surah").value;
 
- let res = await fetch("https://api.alquran.cloud/v1/surah/"+s+"/ar.alafasy");
+ let res = await fetch(
+"https://api.alquran.cloud/v1/surah/"+s+"/editions/quran-uthmani,id.indonesian"
+);
  let data = await res.json();
 
- ayatList = data.data.ayahs;
+ let arab = data.data[0].ayahs;
+let indo = data.data[1].ayahs;
+
+ayatList = arab;
  currentAyat = 0;
 
  let html = "";
 
  ayatList.forEach((a,i)=>{
   html += `
+html += `
 
 <div style="
 background:#020617;
 padding:22px;
 border-radius:22px;
 margin-top:15px;
-
 box-shadow:
 0 0 20px rgba(0,0,0,.45);
-
 ">
 
 <div style="
@@ -771,14 +775,25 @@ Ayat ${i+1}
 </div>
 
 <div style="
-font-size:38px;
+font-size:26px;
 line-height:2;
 direction:rtl;
 text-align:right;
 color:white;
 ">
 
-${a.text}
+${arab[i].text}
+
+</div>
+
+<div style="
+margin-top:18px;
+font-size:15px;
+line-height:1.8;
+color:#d1d5db;
+">
+
+${indo[i].text}
 
 </div>
 
