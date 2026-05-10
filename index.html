@@ -745,37 +745,12 @@ async function loadQuran(){
 
  let html = "";
 
- ayatList.forEach((a,i)=>{
-
  html += `
- <div class="item">
-
- <b style="
- font-size:16px;
- ">
-
- Ayat ${i+1}
-
- </b>
-
- <br>
-
- <div style="
- font-size:18px;
- line-height:1.8;
- margin-top:8px;
- direction:rtl;
- text-align:right;
- ">
-
- ${a.text}
-
- </div>
-
- </div>
- `;
-
-});
+<div class="item">
+  <b>Ayat ${i+1}</b><br>
+  ${a.text}
+</div>
+`;
 
  // 🔥 tombol play semua
  html = `
