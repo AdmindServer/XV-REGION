@@ -6,6 +6,117 @@
 <title>XV-REGION</title>
 
 <style>
+.menu-box{
+
+position:fixed;
+
+top:0;
+left:-100%;
+
+width:80%;
+height:100%;
+
+background:#050505;
+
+z-index:99999;
+
+padding:25px;
+
+transition:.4s;
+
+overflow:auto;
+
+}
+
+.menu-box.show{
+
+left:0;
+
+}
+
+.sideProfile{
+
+text-align:center;
+
+margin-bottom:25px;
+
+}
+
+.sideLogo{
+
+width:110px;
+height:110px;
+
+border-radius:50%;
+
+border:3px solid red;
+
+box-shadow:
+0 0 30px red;
+
+object-fit:cover;
+
+}
+
+.sideItem{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:
+rgba(255,0,0,.12);
+
+padding:18px;
+
+border-radius:20px;
+
+margin-top:15px;
+
+font-size:18px;
+font-weight:bold;
+
+color:white;
+
+}
+
+.logoutBtn{
+
+margin-top:30px;
+
+background:red;
+
+padding:18px;
+
+border-radius:20px;
+
+text-align:center;
+
+font-size:20px;
+font-weight:bold;
+
+}
+
+.overlay{
+
+position:fixed;
+inset:0;
+
+background:
+rgba(0,0,0,.65);
+
+display:none;
+
+z-index:9999;
+
+}
+
+.overlay.active{
+
+display:block;
+
+}
+ 
 /* ===== RANK SYSTEM ===== */
 
 .rank{
@@ -440,14 +551,126 @@ Premium WhatsApp Tools
 
 </div>
  
-<div class="overlay"></div>
+<div class="overlay"
+id="overlay"
+onclick="closeMenu()">
+</div>
 
-<div class="menu" onclick="menuBox.classList.toggle('show')">☰</div>
+<div class="menu"
+onclick="openMenu()">
 
-<div class="menu-box" id="menuBox">
- VIP USER
- <hr>
- <p onclick="location.reload()" style="color:red;">Logout</p>
+☰
+
+</div>
+
+<div class="menu-box"
+id="menuBox">
+
+<div class="sideProfile">
+
+<img src="logo.png"
+class="sideLogo">
+
+<h2>
+
+XV-REGION
+
+</h2>
+
+<p>
+
+🟢 OWNER ACCESS
+
+</p>
+
+</div>
+
+<div class="sideItem"
+onclick="
+window.location.href='au.html'
+">
+
+<span>👑 Owner Dashboard</span>
+
+<span>›</span>
+
+</div>
+
+<div class="sideItem"
+onclick="
+window.location.href='analisis.html'
+">
+
+<span>📊 Analisis Akun</span>
+
+<span>›</span>
+
+</div>
+
+<div class="sideItem"
+onclick="
+window.location.href='berhasil.html'
+">
+
+<span>➕ Create Account</span>
+
+<span>›</span>
+
+</div>
+
+<div class="sideItem"
+onclick="
+window.location.href='riwayat.html'
+">
+
+<span>📜 Riwayat Aktivitas</span>
+
+<span>›</span>
+
+</div>
+
+<div class="sideItem"
+onclick="
+window.location.href='sender.html'
+">
+
+<span>📡 Manage Sender</span>
+
+<span>›</span>
+
+</div>
+
+<div class="sideItem"
+onclick="
+window.location.href=
+'https://whatsapp.com/channel/0029Vb7Ve1b3wtbCclABd11w'
+">
+
+<span>📢 Info Channel</span>
+
+<span>›</span>
+
+</div>
+
+<div class="sideItem"
+onclick="
+window.location.href=
+'https://wa.me/6285283786794'
+">
+
+<span>💬 Chat Owner</span>
+
+<span>›</span>
+
+</div>
+
+<div class="logoutBtn"
+onclick="logout()">
+
+🚪 LOG OUT
+
+</div>
+
 </div>
 
 <div class="container">
@@ -1456,6 +1679,30 @@ if(roleUser==="MEMBER"){
 rankBox.className="rank member";
 rankIcon.innerHTML="🙂";
 rankRole.innerHTML="MEMBER ACCESS";
+}
+
+ function openMenu(){
+
+menuBox.classList.add(
+"show"
+);
+
+overlay.classList.add(
+"active"
+);
+
+}
+
+function closeMenu(){
+
+menuBox.classList.remove(
+"show"
+);
+
+overlay.classList.remove(
+"active"
+);
+
 }
 </script>
 
