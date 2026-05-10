@@ -356,6 +356,64 @@ style="
  </div>
 </div>
 
+<!-- OPENING VIDEO -->
+<div id="openingVideo"
+style="
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+z-index:999999;
+
+display:none;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+">
+
+<video
+id="introVideo"
+playsinline
+style="
+width:100%;
+height:100%;
+object-fit:cover;
+position:absolute;
+top:0;
+left:0;
+">
+
+<source src="Opening.mp4"
+type="video/mp4">
+
+</video>
+
+<div style="
+position:relative;
+z-index:2;
+
+font-size:45px;
+font-weight:bold;
+
+color:red;
+
+text-shadow:
+0 0 20px red,
+0 0 40px red;
+
+margin-top:70vh;
+
+letter-spacing:4px;
+">
+
+XV-REGION
+
+</div>
+
+</div>
+ 
 <div class="overlay"></div>
 
 <div class="menu" onclick="menuBox.classList.toggle('show')">☰</div>
@@ -1108,7 +1166,37 @@ function login(){
  }
 
  // masuk
- document.getElementById("loginBox").style.display="none";
+ // HIDE LOGIN
+document.getElementById(
+"loginBox"
+).style.display="none";
+
+// SHOW OPENING
+let ov =
+document.getElementById(
+"openingVideo"
+);
+
+ov.style.display="flex";
+
+// PLAY VIDEO + SOUND
+let vid =
+document.getElementById(
+"introVideo"
+);
+
+vid.muted = false;
+
+vid.volume = 1;
+
+vid.play();
+
+// CLOSE OPENING
+setTimeout(()=>{
+
+ ov.style.display="none";
+
+},7000);
 
  document.getElementById("home").style.display="block";
 
