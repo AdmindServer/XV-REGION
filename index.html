@@ -741,7 +741,6 @@ async function loadQuran(){
 "https://api.alquran.cloud/v1/surah/"+s+"/editions/quran-uthmani,id.indonesian"
 );
  let data = await res.json();
-
  let arab = data.data[0].ayahs;
 let indo = data.data[1].ayahs;
 
@@ -775,7 +774,7 @@ Ayat ${i+1}
 </div>
 
 <div style="
-font-size:26px;
+font-size:18px;
 line-height:2;
 direction:rtl;
 text-align:right;
