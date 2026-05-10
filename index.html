@@ -742,7 +742,7 @@ async function loadQuran(){
 );
  let data = await res.json();
  let arab = data.data[0].ayahs;
-let indo = data.data[1].ayahs;
+ let indo = data.data[1].ayahs;
 
 ayatList = arab;
  currentAyat = 0;
@@ -752,52 +752,10 @@ ayatList = arab;
  ayatList.forEach((a,i)=>{
   html += `
 html += `
-
-<div style="
-background:#020617;
-padding:22px;
-border-radius:22px;
-margin-top:15px;
-box-shadow:
-0 0 20px rgba(0,0,0,.45);
-">
-
-<div style="
-font-size:18px;
-font-weight:bold;
-margin-bottom:15px;
-color:white;
-">
-
-Ayat ${i+1}
-
+<div class="item">
+  <b>Ayat ${i+1}</b><br>
+  ${a.text}
 </div>
-
-<div style="
-font-size:18px;
-line-height:2;
-direction:rtl;
-text-align:right;
-color:white;
-">
-
-${arab[i].text}
-
-</div>
-
-<div style="
-margin-top:18px;
-font-size:15px;
-line-height:1.8;
-color:#d1d5db;
-">
-
-${indo[i].text}
-
-</div>
-
-</div>
-
 `;
  });
 
