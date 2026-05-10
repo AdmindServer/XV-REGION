@@ -1683,6 +1683,22 @@ rankRole.innerHTML="MEMBER ACCESS";
 
  function openMenu(){
 
+if(
+menuBox.classList.contains(
+"show"
+)
+){
+
+menuBox.classList.remove(
+"show"
+);
+
+overlay.classList.remove(
+"active"
+);
+
+}else{
+
 menuBox.classList.add(
 "show"
 );
@@ -1692,6 +1708,8 @@ overlay.classList.add(
 );
 
 }
+
+ }
 
 function closeMenu(){
 
