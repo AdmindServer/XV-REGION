@@ -6,6 +6,101 @@
 <title>XV-REGION</title>
 
 <style>
+/* PROFILE VIDEO */
+
+.sideProfile{
+
+position:relative;
+
+height:260px;
+
+border-radius:28px;
+
+overflow:hidden;
+
+margin-bottom:25px;
+
+box-shadow:
+0 0 35px rgba(255,0,0,.35);
+
+}
+
+.profileVideo{
+
+position:absolute;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+}
+
+.profileOverlay{
+
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+180deg,
+rgba(0,0,0,.15),
+rgba(0,0,0,.75)
+);
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+backdrop-filter:
+blur(2px);
+
+}
+
+.sideLogo{
+
+width:110px;
+height:110px;
+
+border-radius:50%;
+
+border:3px solid red;
+
+object-fit:cover;
+
+box-shadow:
+0 0 35px red;
+
+animation:
+logoPulse 2s infinite;
+
+}
+
+@keyframes logoPulse{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.05);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+ 
 .menu-box{
 
 position:fixed;
@@ -685,6 +780,21 @@ id="menuBox">
 
 <div class="sideProfile">
 
+<video
+autoplay
+muted
+loop
+playsinline
+
+class="profileVideo">
+
+<source src="Owner.mp4"
+type="video/mp4">
+
+</video>
+
+<div class="profileOverlay">
+
 <img src="logo.png"
 class="sideLogo">
 
@@ -699,6 +809,8 @@ XV-REGION
 🟢 OWNER ACCESS
 
 </p>
+
+</div>
 
 </div>
 
@@ -1885,25 +1997,49 @@ alert(
 
 }
 
-// OPEN SENDER
-function openSender(){
+function openMenu(){
 
-document
-.getElementById(
-"senderPopup"
+menuBox.classList.toggle(
+"show"
+);
+
+overlay.classList.toggle(
+"active"
+);
+
+if(
+menuBox.classList.contains(
+"show"
 )
-.style.display="flex";
+){
+
+document.querySelector(
+".menu"
+).style.opacity="0";
+
+}else{
+
+document.querySelector(
+".menu"
+).style.opacity="1";
 
 }
 
-// CLOSE
-function closeSender(){
+}
 
-document
-.getElementById(
-"senderPopup"
-)
-.style.display="none";
+function closeMenu(){
+
+menuBox.classList.remove(
+"show"
+);
+
+overlay.classList.remove(
+"active"
+);
+
+document.querySelector(
+".menu"
+).style.opacity="1";
 
 }
 
