@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>XV-REGION SUPPORT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+-webkit-tap-highlight-color:transparent;
+}
+
+body{
+
+background:#000;
+overflow-x:hidden;
+color:white;
+
+}
+
+/* VIDEO */
+
+#bgVideo{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+z-index:-3;
+
+filter:
+brightness(.16)
+blur(2px);
+
+transform:scale(1.08);
+
+}
+
+/* OVERLAY */
+
+.overlay{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+to bottom,
+rgba(0,0,0,.08),
+rgba(0,0,0,.97)
+),
+radial-gradient(
+circle,
+rgba(255,0,0,.14),
+transparent 70%
+);
+
+z-index:-2;
+
+}
+
+/* CONTAINER */
+
+.container{
+
+padding:22px;
+padding-bottom:80px;
+
+}
+
+/* HEADER */
+
+.header{
+
+display:flex;
+align-items:center;
+gap:18px;
+
+margin-bottom:22px;
+
+}
+
+/* BACK */
+
+.backBtn{
+
+font-size:42px;
+
+color:#ff3b3b;
+
+cursor:pointer;
+
+text-shadow:
+0 0 18px rgba(255,0,0,.35);
+
+}
+
+/* TITLE */
+
+.title{
+
+font-size:27px;
+font-weight:bold;
+
+letter-spacing:2px;
+
+}
+
+/* XV LOGO */
+
+.xvLogoWrap{
+
+display:flex;
+justify-content:center;
+
+margin-top:10px;
+margin-bottom:28px;
+
+}
+
+/* LOGO */
+
+.xvLogo{
+
+width:145px;
+height:145px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:
+3px solid #ff2d2d;
+
+box-shadow:
+0 0 35px rgba(255,0,0,.45),
+0 0 70px rgba(255,0,0,.18);
+
+animation:
+pulse 2s infinite;
+
+}
+
+/* EFFECT */
+
+@keyframes pulse{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.04);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* HELP */
+
+.helpTitle{
+
+text-align:center;
+
+font-size:40px;
+font-weight:bold;
+
+margin-bottom:14px;
+
+text-shadow:
+0 0 20px rgba(255,0,0,.28);
+
+}
+
+/* TEXT */
+
+.helpText{
+
+text-align:center;
+
+font-size:14px;
+
+line-height:1.9;
+
+opacity:.72;
+
+margin-bottom:40px;
+
+}
+
+/* CARD */
+
+.card{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:22px;
+
+border-radius:30px;
+
+margin-bottom:22px;
+
+background:
+linear-gradient(
+145deg,
+rgba(45,0,0,.84),
+rgba(12,0,0,.96)
+);
+
+border:
+1px solid rgba(255,0,0,.18);
+
+backdrop-filter:blur(16px);
+
+box-shadow:
+0 0 28px rgba(255,0,0,.08);
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+/* CLICK */
+
+.card:active{
+
+transform:scale(.97);
+
+}
+
+/* LEFT */
+
+.left{
+
+display:flex;
+align-items:center;
+gap:18px;
+
+}
+
+/* ICON */
+
+.logo{
+
+width:64px;
+height:64px;
+
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:30px;
+
+}
+
+/* TELEGRAM */
+
+.tele{
+
+background:
+rgba(0,140,255,.18);
+
+color:#4aa8ff;
+
+box-shadow:
+0 0 18px rgba(0,140,255,.22);
+
+}
+
+/* WHATSAPP */
+
+.wa{
+
+background:
+rgba(0,255,120,.12);
+
+color:#32ff88;
+
+box-shadow:
+0 0 18px rgba(0,255,120,.16);
+
+}
+
+/* TIKTOK */
+
+.tt{
+
+background:
+rgba(255,255,255,.12);
+
+color:#fff;
+
+box-shadow:
+0 0 18px rgba(255,255,255,.12);
+
+}
+
+/* INSTAGRAM */
+
+.ig{
+
+background:
+rgba(255,0,140,.12);
+
+color:#ff4fa5;
+
+box-shadow:
+0 0 18px rgba(255,0,140,.18);
+
+}
+
+/* NAME */
+
+.name{
+
+font-size:18px;
+font-weight:bold;
+
+letter-spacing:1px;
+
+}
+
+/* ARROW */
+
+.arrow{
+
+font-size:34px;
+
+opacity:.65;
+
+}
+
+/* FOOT */
+
+.footer{
+
+text-align:center;
+
+font-size:12px;
+
+opacity:.45;
+
+margin-top:35px;
+
+letter-spacing:2px;
+
+}
+
+::-webkit-scrollbar{
+
+width:0;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO -->
+
+<video
+autoplay
+muted
+loop
+playsinline
+id="bgVideo"
+>
+
+<source
+src="Owner.mp4"
+type="video/mp4"
+>
+
+</video>
+
+<div class="overlay"></div>
+
+<div class="container">
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div
+class="backBtn"
+onclick="
+history.back()
+"
+>
+
+‹
+
+</div>
+
+<div class="title">
+
+Customer Service
+
+</div>
+
+</div>
+
+<!-- LOGO -->
+
+<div class="xvLogoWrap">
+
+<img
+src="logo.png"
+class="xvLogo"
+>
+
+</div>
+
+<!-- TEXT -->
+
+<div class="helpTitle">
+
+Need Help?
+
+</div>
+
+<div class="helpText">
+
+Contact us through our social media
+platforms below.
+
+</div>
+
+<!-- TELEGRAM -->
+
+<div
+class="card"
+
+onclick="
+window.location.href=
+'https://t.me/Orgggaja'
+"
+>
+
+<div class="left">
+
+<div class="logo tele">
+
+<i class="fa-brands fa-telegram"></i>
+
+</div>
+
+<div class="name">
+
+Telegram
+
+</div>
+
+</div>
+
+<div class="arrow">
+
+›
+
+</div>
+
+</div>
+
+<!-- WHATSAPP -->
+
+<div
+class="card"
+
+onclick="
+window.location.href=
+'https://wa.me/6285283786794'
+"
+>
+
+<div class="left">
+
+<div class="logo wa">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+</div>
+
+<div class="name">
+
+WhatsApp
+
+</div>
+
+</div>
+
+<div class="arrow">
+
+›
+
+</div>
+
+</div>
+
+<!-- TIKTOK -->
+
+<div
+class="card"
+
+onclick="
+window.location.href=
+'https://www.tiktok.com/@pecintahpkentang?_r=1&_t=ZS-96GYrovi0mt'
+"
+>
+
+<div class="left">
+
+<div class="logo tt">
+
+<i class="fa-brands fa-tiktok"></i>
+
+</div>
+
+<div class="name">
+
+TikTok
+
+</div>
+
+</div>
+
+<div class="arrow">
+
+›
+
+</div>
+
+</div>
+
+<!-- INSTAGRAM -->
+
+<div
+class="card"
+
+onclick="
+window.location.href=
+'https://www.instagram.com/pecinta_hpkentang?igsh=MXJ6Zm96MHppbnI1aQ=='
+"
+>
+
+<div class="left">
+
+<div class="logo ig">
+
+<i class="fa-brands fa-instagram"></i>
+
+</div>
+
+<div class="name">
+
+Instagram
+
+</div>
+
+</div>
+
+<div class="arrow">
+
+›
+
+</div>
+
+</div>
+
+<!-- FOOT -->
+
+<div class="footer">
+
+XV-REGION SUPPORT CENTER
+
+</div>
+
+</div>
+
+<!-- MUSIC -->
+
+<audio
+id="music"
+autoplay
+loop
+playsinline
+>
+
+<source
+src="music5.mp3"
+type="audio/mp3"
+>
+
+</audio>
+
+<script>
+
+/* MUSIC */
+
+window.onload = () => {
+
+document
+.getElementById(
+"music"
+)
+.play();
+
+/* AI VOICE */
+
+let suara =
+new SpeechSynthesisUtterance(
+
+"Halo. Ada yang bisa kami bantu? Silakan hubungi admin di sini. Terima kasih."
+
+);
+
+suara.lang = "id-ID";
+
+suara.rate = 0.9;
+
+suara.pitch = 1.2;
+
+speechSynthesis.speak(
+suara
+);
+
+}
+
+</script>
+
+</body>
+</html>
