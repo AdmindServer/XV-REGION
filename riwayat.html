@@ -30,7 +30,7 @@ padding:22px;
 
 }
 
-/* VIDEO BACKGROUND */
+/* VIDEO BG */
 
 #bgVideo{
 
@@ -94,8 +94,6 @@ margin-bottom:30px;
 
 }
 
-/* BACK */
-
 .back{
 
 width:58px;
@@ -118,8 +116,6 @@ border:
 backdrop-filter:blur(10px);
 
 }
-
-/* TITLE */
 
 .title{
 
@@ -164,8 +160,6 @@ margin-bottom:35px;
 
 }
 
-/* LOGO */
-
 .logo{
 
 width:90px;
@@ -182,8 +176,6 @@ box-shadow:
 0 0 30px rgba(255,0,0,.5);
 
 }
-
-/* PROFILE INFO */
 
 .profileInfo{
 
@@ -273,7 +265,7 @@ animation:show .35s ease;
 
 }
 
-/* SHOW */
+/* ANIM */
 
 @keyframes show{
 
@@ -328,8 +320,6 @@ flex:1;
 
 }
 
-/* TOP */
-
 .top{
 
 display:flex;
@@ -345,8 +335,6 @@ margin-bottom:12px;
 font-size:22px;
 
 }
-
-/* BADGE */
 
 .badge{
 
@@ -368,8 +356,6 @@ color:#ff5c5c;
 
 }
 
-/* DESC */
-
 .desc{
 
 font-size:15px;
@@ -379,8 +365,6 @@ line-height:1.8;
 opacity:.88;
 
 }
-
-/* DATE */
 
 .date{
 
@@ -472,7 +456,7 @@ class="logo"
 
 <h1 id="userName">
 
-XV-REGION OWNER
+XV-REGION USER
 
 </h1>
 
@@ -480,13 +464,13 @@ XV-REGION OWNER
 
 <div class="status" id="roleStatus">
 
-ROLE : OWNER
+ROLE : MEMBER
 
 </div>
 
 <div class="status" id="memberStatus">
 
-STATUS : PREMIUM
+STATUS : FREE USER
 
 </div>
 
@@ -524,17 +508,17 @@ Belum ada aktivitas...
 let username =
 localStorage.getItem(
 "xv_user"
-) || "XV-REGION OWNER"
+) || "XV-REGION USER"
 
 let role =
 localStorage.getItem(
 "xv_role"
-) || "USER"
+) || "MEMBER"
 
 let status =
 localStorage.getItem(
 "xv_status"
-) || "PREMIUM"
+) || "FREE USER"
 
 document
 .getElementById(
