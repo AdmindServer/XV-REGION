@@ -525,121 +525,6 @@ body{
 </head>
 
 <body>
-<!-- POPUP SENDER -->
-
-<div id="senderPopup"
-style="
-display:none;
-
-position:fixed;
-inset:0;
-
-background:
-rgba(0,0,0,.7);
-
-z-index:999999;
-
-align-items:center;
-justify-content:center;
-">
-
-<div style="
-width:90%;
-max-width:400px;
-
-background:#111827;
-
-padding:20px;
-
-border-radius:25px;
-
-box-shadow:
-0 0 35px rgba(255,0,0,.35);
-">
-
-<h2 style="
-margin-bottom:20px;
-text-align:center;
-">
-
-📡 Manage Sender
-
-</h2>
-
-<input
-id="senderInput"
-
-placeholder="628xxxx"
-
-style="
-width:100%;
-
-padding:16px;
-
-border:none;
-
-border-radius:18px;
-
-background:#1f2937;
-
-color:white;
-
-font-size:16px;
-">
-
-<button
-onclick="saveSender()"
-
-style="
-width:100%;
-
-margin-top:18px;
-
-padding:16px;
-
-border:none;
-
-border-radius:18px;
-
-background:red;
-
-color:white;
-
-font-size:18px;
-font-weight:bold;
-">
-
-💾 Simpan Sender
-
-</button>
-
-<button
-onclick="closeSender()"
-
-style="
-width:100%;
-
-margin-top:10px;
-
-padding:14px;
-
-border:none;
-
-border-radius:18px;
-
-background:#222;
-
-color:white;
-
-font-size:16px;
-">
-
-Tutup
-
-</button>
-
-</div>
-
 </div>
  
 <video autoplay muted loop playsinline id="bgvid"
@@ -902,14 +787,14 @@ Riwayat Aktivitas
 
 <div class="sideItem"
 onclick="
-openSender()
+window.location.href='Sender.html'
 ">
 
 <div class="menuLeft">
 
 <div class="menuIcon">
 
-
+📡
 
 </div>
 
@@ -928,6 +813,7 @@ Manage Sender
 </div>
 
 </div>
+
 
 <div class="logoutBtn"
 onclick="logout()">
