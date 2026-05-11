@@ -794,6 +794,7 @@ window.location.href='Sender.html'
 
 <div class="menuIcon">
 
+📡
 
 </div>
 
@@ -813,13 +814,91 @@ Manage Sender
 
 </div>
 
+<!-- CREATE AKUN -->
 
-<div class="logoutBtn"
-onclick="logout()">
+<div class="sideItem">
 
- Keluar Akun
+<div class="menuLeft">
+
+<div class="menuIcon">
+
+👤
 
 </div>
+
+<span>
+
+Create Akun
+
+</span>
+
+</div>
+
+<div class="menuArrow">
+
+›
+
+</div>
+
+</div>
+
+<!-- RIWAYAT -->
+
+<div class="sideItem">
+
+<div class="menuLeft">
+
+<div class="menuIcon">
+
+📜
+
+</div>
+
+<span>
+
+Riwayat Aktivitas
+
+</span>
+
+</div>
+
+<div class="menuArrow">
+
+›
+
+</div>
+
+</div>
+
+<!-- LOGOUT -->
+
+<div class="sideItem logoutBtn"
+onclick="logout()">
+
+<div class="menuLeft">
+
+<div class="menuIcon">
+
+🚪
+
+</div>
+
+<span>
+
+Keluar Akun
+
+</span>
+
+</div>
+
+<div class="menuArrow">
+
+›
+
+</div>
+
+</div>
+
 </div>
 
 <div class="container">
@@ -1959,31 +2038,6 @@ alert(
 closeSender();
 
 }
-
- function logout(){
-
-let yakin =
-confirm(
-"Yakin ingin logout?"
-);
-
-if(!yakin){
-
-return;
-
-}
-
-localStorage.clear();
-
-alert(
-"Berhasil logout!"
-);
-
-window.location.href =
-"index.html";
-
-}
- 
 </script>
 
 </body>
