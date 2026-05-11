@@ -430,6 +430,123 @@ body{
 </head>
 
 <body>
+<!-- POPUP SENDER -->
+
+<div id="senderPopup"
+style="
+display:none;
+
+position:fixed;
+inset:0;
+
+background:
+rgba(0,0,0,.7);
+
+z-index:999999;
+
+align-items:center;
+justify-content:center;
+">
+
+<div style="
+width:90%;
+max-width:400px;
+
+background:#111827;
+
+padding:20px;
+
+border-radius:25px;
+
+box-shadow:
+0 0 35px rgba(255,0,0,.35);
+">
+
+<h2 style="
+margin-bottom:20px;
+text-align:center;
+">
+
+📡 Manage Sender
+
+</h2>
+
+<input
+id="senderInput"
+
+placeholder="628xxxx"
+
+style="
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:18px;
+
+background:#1f2937;
+
+color:white;
+
+font-size:16px;
+">
+
+<button
+onclick="saveSender()"
+
+style="
+width:100%;
+
+margin-top:18px;
+
+padding:16px;
+
+border:none;
+
+border-radius:18px;
+
+background:red;
+
+color:white;
+
+font-size:18px;
+font-weight:bold;
+">
+
+💾 Simpan Sender
+
+</button>
+
+<button
+onclick="closeSender()"
+
+style="
+width:100%;
+
+margin-top:10px;
+
+padding:14px;
+
+border:none;
+
+border-radius:18px;
+
+background:#222;
+
+color:white;
+
+font-size:16px;
+">
+
+Tutup
+
+</button>
+
+</div>
+
+</div>
+ 
 <video autoplay muted loop playsinline id="bgvid"
 style="
  position:fixed;
@@ -590,20 +707,27 @@ onclick="
 window.location.href='au.html'
 ">
 
-<span>👑 Owner Dashboard</span>
+<div class="menuLeft">
 
-<span>›</span>
+<div class="menuIcon">
+
+👑
 
 </div>
 
-<div class="sideItem"
-onclick="
-window.location.href='analisis.html'
-">
+<span>
 
-<span>📊 Analisis Akun</span>
+Owner Page
 
-<span>›</span>
+</span>
+
+</div>
+
+<div class="menuArrow">
+
+›
+
+</div>
 
 </div>
 
@@ -612,65 +736,94 @@ onclick="
 window.location.href='berhasil.html'
 ">
 
-<span>➕ Create Account</span>
+<div class="menuLeft">
 
-<span>›</span>
+<div class="menuIcon">
+
+➕
+
+</div>
+
+<span>
+
+Create Account
+
+</span>
+
+</div>
+
+<div class="menuArrow">
+
+›
+
+</div>
 
 </div>
 
 <div class="sideItem"
 onclick="
-window.location.href='riwayat.html'
+showRiwayat()
 ">
 
-<span>📜 Riwayat Aktivitas</span>
+<div class="menuLeft">
 
-<span>›</span>
+<div class="menuIcon">
+
+📜
+
+</div>
+
+<span>
+
+Riwayat Aktivitas
+
+</span>
+
+</div>
+
+<div class="menuArrow">
+
+›
+
+</div>
 
 </div>
 
 <div class="sideItem"
 onclick="
-window.location.href='sender.html'
+openSender()
 ">
 
-<span>📡 Manage Sender</span>
+<div class="menuLeft">
 
-<span>›</span>
+<div class="menuIcon">
+
+📡
 
 </div>
 
-<div class="sideItem"
-onclick="
-window.location.href=
-'https://whatsapp.com/channel/0029Vb7Ve1b3wtbCclABd11w'
-">
+<span>
 
-<span>📢 Info Channel</span>
+Manage Sender
 
-<span>›</span>
+</span>
 
 </div>
 
-<div class="sideItem"
-onclick="
-window.location.href=
-'https://wa.me/6285283786794'
-">
+<div class="menuArrow">
 
-<span>💬 Chat Owner</span>
+›
 
-<span>›</span>
+</div>
 
 </div>
 
 <div class="logoutBtn"
 onclick="logout()">
 
-🚪 LOG OUT
+🚪 Keluar Akun
 
 </div>
-
 </div>
 
 <div class="container">
@@ -1722,6 +1875,71 @@ overlay.classList.remove(
 );
 
 }
+
+ // RIWAYAT
+function showRiwayat(){
+
+alert(
+"📜 Riwayat Aktivitas:\n\n• Spam WA\n• Spam Call\n• Login Owner"
+);
+
+}
+
+// OPEN SENDER
+function openSender(){
+
+document
+.getElementById(
+"senderPopup"
+)
+.style.display="flex";
+
+}
+
+// CLOSE
+function closeSender(){
+
+document
+.getElementById(
+"senderPopup"
+)
+.style.display="none";
+
+}
+
+// SAVE
+function saveSender(){
+
+let sender =
+document
+.getElementById(
+"senderInput"
+)
+.value;
+
+if(sender==""){
+
+alert(
+"Isi sender dulu"
+);
+
+return;
+
+}
+
+localStorage.setItem(
+"xvSender",
+sender
+);
+
+alert(
+"✅ Sender tersimpan:\n"+sender
+);
+
+closeSender();
+
+}
+ 
 </script>
 
 </body>
