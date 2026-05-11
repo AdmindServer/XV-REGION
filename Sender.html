@@ -2,7 +2,8 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>XV-REGION SENDER</title>
 
@@ -42,13 +43,10 @@ background-size:cover;
 background-position:center;
 filter:blur(2px);
 z-index:-2;
-}
 pointer-events:none;
 }
-  
+
 .redGlow{
-pointer-events:none;
-}
 position:fixed;
 width:100%;
 height:100%;
@@ -60,6 +58,7 @@ transparent 70%
 );
 z-index:-1;
 animation:pulse 4s infinite;
+pointer-events:none;
 }
 
 @keyframes pulse{
@@ -314,6 +313,7 @@ margin-bottom:5px;
 
 </style>
 </head>
+
 <body>
 
 <div class="bg"></div>
@@ -360,12 +360,10 @@ placeholder="628xxxxxxxxxx"
 
 <button
 class="btn"
-id="pairBtn">
-
+onclick="generateCode()"
+>
 PAIRING SENDER
-
 </button>
-
 
 <div class="status">
 Status : Waiting Pairing...
@@ -378,8 +376,7 @@ Status : Waiting Pairing...
 <h2>Info</h2>
 
 <p>
-Sender hanya tampilan UI demo.
-Backend pairing WhatsApp belum dihubungkan.
+Sender backend aktif dan siap pairing.
 </p>
 
 </div>
@@ -448,30 +445,20 @@ CLOSE
 
 <script>
 
-<script>
-
-document
-.getElementById(
-"pairBtn"
-)
-.addEventListener(
-"click",
-async()=>{
+async function generateCode(){
 
 let nomor =
-document
-.getElementById(
+document.getElementById(
 "nomor"
-)
-.value
+).value;
 
 if(!nomor){
 
 alert(
-"Masukkan nomor!"
-)
+"Masukkan nomor dulu!"
+);
 
-return
+return;
 
 }
 
@@ -479,18 +466,25 @@ try{
 
 let req =
 await fetch(
-"http://localhost:3000/pair"
-)
+"http://127.0.0.1:3000/pair"
+);
 
 let res =
-await req.json()
+await req.json();
 
 document
 .getElementById(
 "pairCode"
 )
 .innerHTML =
-res.code
+res.code;
+
+document
+.getElementById(
+"showNumber"
+)
+.innerHTML =
+"Number : " + nomor;
 
 document
 .getElementById(
@@ -498,18 +492,19 @@ document
 )
 .classList.add(
 "show"
-)
+);
 
-}catch(e){
+}catch(err){
 
 alert(
-"Backend tidak aktif!"
-)
+"Backend offline!"
+);
+
+console.log(err);
 
 }
 
 }
-)
 
 function closePopup(){
 
