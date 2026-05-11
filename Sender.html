@@ -356,10 +356,12 @@ placeholder="628xxxxxxxxxx"
 
 <button
 class="btn"
-onclick="generateCode()"
->
+id="pairBtn">
+
 PAIRING SENDER
+
 </button>
+
 
 <div class="status">
 Status : Waiting Pairing...
@@ -442,12 +444,22 @@ CLOSE
 
 <script>
 
-async function generateCode(){
+<script>
+
+document
+.getElementById(
+"pairBtn"
+)
+.addEventListener(
+"click",
+async()=>{
 
 let nomor =
-document.getElementById(
+document
+.getElementById(
 "nomor"
-).value
+)
+.value
 
 if(!nomor){
 
@@ -458,6 +470,8 @@ alert(
 return
 
 }
+
+try{
 
 let req =
 await fetch(
@@ -482,7 +496,16 @@ document
 "show"
 )
 
+}catch(e){
+
+alert(
+"Backend tidak aktif!"
+)
+
 }
+
+}
+)
 
 function closePopup(){
 
