@@ -1565,6 +1565,50 @@ function login(){
   return;
  }
 
+  /* SIMPAN USER */
+
+ localStorage.setItem(
+ "xv_user",
+ u
+ );
+
+ /* ROLE */
+
+ if(
+ u == "owner"
+ ){
+
+  localStorage.setItem(
+  "xv_role",
+  "OWNER"
+  );
+
+  localStorage.setItem(
+  "xv_status",
+  "PREMIUM"
+  );
+
+ }else{
+
+  localStorage.setItem(
+  "xv_role",
+  "MEMBER"
+  );
+
+  localStorage.setItem(
+  "xv_status",
+  "FREE USER"
+  );
+
+ }
+
+ /* LANJUT LOGIN */
+
+ window.location.href =
+ "home.html";
+
+}
+ 
  // masuk
  // HIDE LOGIN
 document.getElementById(
