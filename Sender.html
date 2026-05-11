@@ -442,52 +442,52 @@ CLOSE
 
 <script>
 
-function generateCode(){
+async function generateCode(){
 
 let nomor =
 document.getElementById(
 "nomor"
-).value;
+).value
 
 if(!nomor){
 
 alert(
-"Masukkan nomor dulu!"
-);
-
-return;
-
-}
-
-let chars =
-"ABCDEFGHJKLMNPQRSTUVWXYZ123456789";
-
-let code = "";
-
-for(let i=0;i<8;i++){
-
-code += chars.charAt(
-Math.floor(
-Math.random()*chars.length
+"Masukkan nomor!"
 )
-);
+
+return
 
 }
 
-document.getElementById(
+let req =
+await fetch(
+"https://xxxxx.trycloudflare.com/pair"
+)
+
+let res =
+await req.json()
+
+document
+.getElementById(
 "pairCode"
-).innerHTML = code;
+)
+.innerHTML =
+res.code
 
-document.getElementById(
+document
+.getElementById(
 "showNumber"
-).innerHTML =
-"Number : " + nomor;
+)
+.innerHTML =
+"Number : " + nomor
 
-document.getElementById(
+document
+.getElementById(
 "popup"
-).classList.add(
+)
+.classList.add(
 "show"
-);
+)
 
 }
 
