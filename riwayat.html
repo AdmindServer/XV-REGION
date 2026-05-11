@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>XV-REGION • Riwayat</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+-webkit-tap-highlight-color:transparent;
+}
+
+body{
+
+background:black;
+overflow-x:hidden;
+color:white;
+padding:22px;
+
+}
+
+/* VIDEO BACKGROUND */
+
+#bgVideo{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+z-index:-3;
+
+filter:
+brightness(.35)
+blur(2px);
+
+transform:scale(1.08);
+
+}
+
+/* OVERLAY */
+
+.overlay{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+to bottom,
+rgba(0,0,0,.2),
+rgba(0,0,0,.94)
+),
+radial-gradient(
+circle,
+rgba(255,0,0,.14),
+transparent 70%
+);
+
+z-index:-2;
+
+}
+
+/* HEADER */
+
+.header{
+
+display:flex;
+align-items:center;
+gap:18px;
+
+margin-bottom:30px;
+
+}
+
+/* BACK */
+
+.back{
+
+width:58px;
+height:58px;
+
+border-radius:18px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:34px;
+
+background:
+rgba(20,0,0,.75);
+
+border:
+1px solid rgba(255,0,0,.2);
+
+backdrop-filter:blur(10px);
+
+}
+
+/* TITLE */
+
+.title{
+
+font-size:33px;
+font-weight:bold;
+
+text-shadow:
+0 0 20px rgba(255,0,0,.4);
+
+}
+
+/* PROFILE */
+
+.profile{
+
+width:100%;
+
+padding:24px;
+
+border-radius:35px;
+
+background:
+linear-gradient(
+145deg,
+rgba(40,0,0,.78),
+rgba(10,0,0,.92)
+);
+
+border:
+1px solid rgba(255,0,0,.18);
+
+backdrop-filter:blur(16px);
+
+box-shadow:
+0 0 35px rgba(255,0,0,.12);
+
+display:flex;
+align-items:center;
+gap:18px;
+
+margin-bottom:35px;
+
+}
+
+/* LOGO */
+
+.logo{
+
+width:90px;
+height:90px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:
+3px solid #ff2a2a;
+
+box-shadow:
+0 0 30px rgba(255,0,0,.5);
+
+}
+
+/* PROFILE INFO */
+
+.profileInfo{
+
+flex:1;
+
+}
+
+.profileInfo h1{
+
+font-size:24px;
+
+margin-bottom:10px;
+
+}
+
+/* STATUS */
+
+.statusBox{
+
+display:flex;
+
+gap:10px;
+
+flex-wrap:wrap;
+
+margin-top:8px;
+
+}
+
+.status{
+
+padding:8px 14px;
+
+border-radius:18px;
+
+font-size:12px;
+
+font-weight:bold;
+
+background:
+rgba(255,0,0,.16);
+
+border:
+1px solid rgba(255,0,0,.18);
+
+color:#ff4d4d;
+
+}
+
+/* HISTORY */
+
+#historyBox{
+
+display:flex;
+flex-direction:column;
+gap:25px;
+
+}
+
+/* CARD */
+
+.card{
+
+padding:24px;
+
+border-radius:35px;
+
+background:
+linear-gradient(
+145deg,
+rgba(50,0,0,.76),
+rgba(12,0,0,.92)
+);
+
+border:
+1px solid rgba(255,0,0,.18);
+
+backdrop-filter:blur(16px);
+
+box-shadow:
+0 0 35px rgba(255,0,0,.1);
+
+display:flex;
+gap:18px;
+
+animation:show .35s ease;
+
+}
+
+/* SHOW */
+
+@keyframes show{
+
+from{
+
+opacity:0;
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+/* ICON */
+
+.icon{
+
+width:82px;
+height:82px;
+
+min-width:82px;
+
+border-radius:28px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:38px;
+
+background:
+rgba(255,140,0,.12);
+
+border:
+2px solid rgba(255,170,0,.22);
+
+color:#ffb347;
+
+}
+
+/* INFO */
+
+.info{
+
+flex:1;
+
+}
+
+/* TOP */
+
+.top{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+margin-bottom:12px;
+
+}
+
+.top h2{
+
+font-size:22px;
+
+}
+
+/* BADGE */
+
+.badge{
+
+padding:8px 16px;
+
+border-radius:18px;
+
+background:
+rgba(255,0,0,.18);
+
+border:
+1px solid rgba(255,0,0,.18);
+
+font-size:12px;
+
+font-weight:bold;
+
+color:#ff5c5c;
+
+}
+
+/* DESC */
+
+.desc{
+
+font-size:15px;
+
+line-height:1.8;
+
+opacity:.88;
+
+}
+
+/* DATE */
+
+.date{
+
+margin-top:14px;
+
+font-size:13px;
+
+opacity:.62;
+
+}
+
+/* EMPTY */
+
+.empty{
+
+margin-top:180px;
+
+text-align:center;
+
+font-size:17px;
+
+opacity:.4;
+
+}
+
+::-webkit-scrollbar{
+
+width:0;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO -->
+
+<video
+autoplay
+muted
+loop
+playsinline
+id="bgVideo"
+>
+
+<source
+src="Owner.mp4"
+type="video/mp4"
+>
+
+</video>
+
+<div class="overlay"></div>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div
+class="back"
+onclick="
+history.back()
+"
+>
+
+‹
+
+</div>
+
+<div class="title">
+
+Riwayat Aktivitas
+
+</div>
+
+</div>
+
+<!-- PROFILE -->
+
+<div class="profile">
+
+<img
+src="logo.png"
+class="logo"
+>
+
+<div class="profileInfo">
+
+<h1 id="userName">
+
+XV-REGION OWNER
+
+</h1>
+
+<div class="statusBox">
+
+<div class="status" id="roleStatus">
+
+ROLE : OWNER
+
+</div>
+
+<div class="status" id="memberStatus">
+
+STATUS : PREMIUM
+
+</div>
+
+<div class="status">
+
+SYSTEM : ONLINE
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- HISTORY -->
+
+<div id="historyBox"></div>
+
+<!-- EMPTY -->
+
+<div
+class="empty"
+id="emptyBox"
+>
+
+Belum ada aktivitas...
+
+</div>
+
+<script>
+
+/* USER */
+
+let username =
+localStorage.getItem(
+"xv_user"
+) || "XV-REGION OWNER"
+
+let role =
+localStorage.getItem(
+"xv_role"
+) || "OWNER"
+
+let status =
+localStorage.getItem(
+"xv_status"
+) || "PREMIUM"
+
+document
+.getElementById(
+"userName"
+)
+.innerHTML =
+username
+
+document
+.getElementById(
+"roleStatus"
+)
+.innerHTML =
+"ROLE : " + role
+
+document
+.getElementById(
+"memberStatus"
+)
+.innerHTML =
+"STATUS : " + status
+
+/* LOAD */
+
+window.onload = () => {
+
+loadHistory()
+
+}
+
+/* LOAD HISTORY */
+
+function loadHistory(){
+
+let data =
+JSON.parse(
+localStorage.getItem(
+"xv_history"
+)
+) || []
+
+if(data.length < 1){
+
+return
+
+}
+
+document
+.getElementById(
+"emptyBox"
+)
+.style.display =
+"none"
+
+let html = ""
+
+data.reverse().forEach(
+(item)=>{
+
+html += `
+
+<div class="card">
+
+<div class="icon">
+
+${item.icon}
+
+</div>
+
+<div class="info">
+
+<div class="top">
+
+<h2>
+
+${item.title}
+
+</h2>
+
+<div class="badge">
+
+${item.badge}
+
+</div>
+
+</div>
+
+<div class="desc">
+
+${item.desc}
+
+</div>
+
+<div class="date">
+
+◷ ${item.date}
+
+</div>
+
+</div>
+
+</div>
+
+`
+
+}
+)
+
+document
+.getElementById(
+"historyBox"
+)
+.innerHTML = html
+
+}
+
+/* ADD HISTORY */
+
+function addHistory(
+icon,
+title,
+desc,
+badge
+){
+
+let data =
+JSON.parse(
+localStorage.getItem(
+"xv_history"
+)
+) || []
+
+data.push({
+
+icon:icon,
+
+title:title,
+
+desc:desc,
+
+badge:badge,
+
+date:new Date()
+.toLocaleString()
+
+})
+
+localStorage.setItem(
+"xv_history",
+JSON.stringify(data)
+)
+
+}
+
+/* AUTO LOGIN */
+
+if(
+!sessionStorage.getItem(
+"xv_login_session"
+)
+){
+
+addHistory(
+
+"➜",
+
+"Login Berhasil",
+
+"User : " + username +
+" | Role : " + role,
+
+"LOGIN"
+
+)
+
+sessionStorage.setItem(
+"xv_login_session",
+"done"
+)
+
+}
+
+</script>
+
+</body>
+  </html>
