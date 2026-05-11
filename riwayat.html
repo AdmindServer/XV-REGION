@@ -529,7 +529,7 @@ localStorage.getItem(
 let role =
 localStorage.getItem(
 "xv_role"
-) || "OWNER"
+) || "USER"
 
 let status =
 localStorage.getItem(
@@ -540,30 +540,6 @@ document
 .getElementById(
 "userName"
 )
-
-/* TAMPILKAN */
-
-document
-.getElementById(
-"userName"
-)
-.innerHTML =
-username
-
-document
-.getElementById(
-"roleStatus"
-)
-.innerHTML =
-"ROLE : " + role
-
-document
-.getElementById(
-"memberStatus"
-)
-.innerHTML =
-"STATUS : " + status
-  
 .innerHTML =
 username
 
@@ -744,4 +720,4 @@ sessionStorage.setItem(
 </script>
 
 </body>
-  </html>
+</html>
