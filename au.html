@@ -766,6 +766,21 @@ v.muted=false;
 v.volume=1;
 
 v.play();
+
+// VALIDASI AKUN
+ let cek = akunData.find(a =>
+  a.user === u &&
+  a.pass === p
+ );
+
+// SALAH
+ if(!cek){
+
+  alert("Username / Password salah");
+
+  return;
+
+ }
  
   // USER
  document.getElementById("userName")
@@ -774,6 +789,31 @@ v.play();
  // ROLE
  if(cek.role=="OWNER"){
 
+// LOGIN DEVICE
+ let sesi =
+ localStorage.getItem(
+ "login_"+cek.user
+ );
+
+ if(sesi=="online"){
+
+  alert(
+  "User login di perangkat lain"
+  );
+
+  return;
+
+ }
+
+ localStorage.setItem(
+ "login_"+cek.user,
+ "online"
+ );
+
+ cek.online=true;
+
+ currentRole=cek.role;
+  
  // MASUK
  document.getElementById("loginPage")
  .style.display="none";
