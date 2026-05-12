@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Panel</title>
+
+<style>
+/* VIDEO */
+.video-wrap{
+display:flex;
+justify-content:center;
+margin-top:20px;
+}
+
+.video-banner{
+position:relative;
+width:88%;
+height:220px;
+border-radius:40px;
+overflow:hidden;
+
+/* LED MERAH */
+border:3px solid rgba(255,0,0,.95);
+
+box-shadow:
+0 0 15px red,
+0 0 30px rgba(255,0,0,.9),
+0 0 50px rgba(255,0,0,.7),
+0 0 80px rgba(255,0,0,.5);
+}
+
+.video-banner video{
+width:100%;
+height:100%;
+object-fit:contain;
+background:black;
+display:block;
+cursor:pointer;
+}
+
+.video-shadow{
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+to bottom,
+rgba(0,0,0,.05),
+rgba(0,0,0,.45)
+);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:sans-serif;
+}
+
+body{
+background:#020617;
+color:white;
+overflow-x:hidden;
+}
+
+/* BG */
+body::before{
+content:'';
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top,#1d4ed8,#020617 60%);
+z-index:-2;
+}
+
+body::after{
+content:'';
+position:fixed;
+inset:0;
+background:
+linear-gradient(rgba(0,140,255,.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,140,255,.05) 1px, transparent 1px);
+background-size:40px 40px;
+z-index:-1;
+}
+
+/* COOLDOWN */
+.cooldown-bar{
+position:fixed;
+top:15px;
+left:50%;
+transform:translateX(-50%);
+padding:16px 28px;
+border-radius:20px;
+background:rgba(255,193,7,.15);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,193,7,.35);
+color:#ffd54f;
+font-size:16px;
+font-weight:bold;
+box-shadow:0 0 25px rgba(255,193,7,.18);
+z-index:999999;
+display:none;
+}
+
+/* LOGIN */
+#loginPage{
+position:fixed;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#020617;
+z-index:99999;
+}
+
+.login-box{
+width:85%;
+max-width:360px;
+padding:35px;
+border-radius:35px;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(15px);
+box-shadow:0 0 40px rgba(77,163,255,.25);
+}
+
+.login-title{
+font-size:42px;
+font-weight:bold;
+margin-bottom:10px;
+color:#58b7ff;
+text-shadow:0 0 20px #58b7ff;
+}
+
+.login-sub{
+opacity:.7;
+margin-bottom:25px;
+}
+
+input{
+width:100%;
+padding:20px;
+border:none;
+outline:none;
+border-radius:22px;
+background:#081426;
+color:white;
+font-size:18px;
+margin-bottom:18px;
+}
+
+button{
+border:none;
+cursor:pointer;
+}
+
+/* BTN */
+.login-btn{
+width:100%;
+padding:20px;
+border-radius:22px;
+font-size:20px;
+font-weight:bold;
+color:white;
+background:linear-gradient(90deg,#2196f3,#64b5f6);
+box-shadow:0 0 25px rgba(77,163,255,.35);
+}
+
+/* HOME */
+#home{
+display:none;
+padding-bottom:50px;
+}
+
+/* TOPBAR */
+.topbar{
+padding:25px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.user{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.avatar{
+width:65px;
+height:65px;
+border-radius:20px;
+background:#081426;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:35px;
+box-shadow:0 0 20px rgba(0,140,255,.2);
+}
+
+/* OWNER IMAGE */
+.owner-avatar{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:20px;
+}
+ 
+.user-name{
+font-size:24px;
+font-weight:bold;
+}
+
+.user-role{
+margin-top:5px;
+font-size:15px;
+color:#58b7ff;
+}
+
+/* CARD */
+.card{
+margin:20px;
+padding:25px;
+border-radius:35px;
+background:rgba(5,15,35,.92);
+border:1px solid rgba(77,163,255,.15);
+box-shadow:0 0 30px rgba(0,140,255,.12);
+}
+
+/* TITLE */
+.title{
+font-size:28px;
+font-weight:bold;
+margin-bottom:25px;
+color:#9bc9ff;
+text-shadow:0 0 15px #58b7ff;
+}
+
+/* TAB */
+.tab-wrap{
+display:flex;
+gap:15px;
+margin-bottom:25px;
+}
+
+.tab{
+flex:1;
+padding:22px;
+border-radius:25px;
+background:#081426;
+text-align:center;
+font-size:18px;
+border:2px solid transparent;
+transition:.2s;
+color:#8ca4c7;
+}
+
+.tab.active{
+background:#10223d;
+border:2px solid #4da3ff;
+color:#7cc0ff;
+box-shadow:
+0 0 25px rgba(77,163,255,.35),
+inset 0 0 20px rgba(77,163,255,.15);
+}
+
+/* INPUT */
+.input-box{
+display:none;
+}
+
+.input-box.active{
+display:block;
+}
+
+/* MENU */
+.menu{
+padding:22px;
+border-radius:25px;
+background:#081426;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:20px;
+margin-top:15px;
+box-shadow:0 0 15px rgba(0,140,255,.12);
+}
+
+/* MODE */
+.mode-wrap{
+display:flex;
+gap:15px;
+margin-top:25px;
+}
+
+.mode{
+flex:1;
+padding:24px;
+border-radius:28px;
+background:#081426;
+text-align:center;
+font-size:20px;
+border:2px solid transparent;
+color:#8ca4c7;
+}
+
+.mode.active{
+background:#190822;
+border:2px solid #c026d3;
+color:#f0abfc;
+box-shadow:
+0 0 25px rgba(192,38,211,.35),
+inset 0 0 20px rgba(192,38,211,.15);
+}
+
+/* STATUS */
+.sender-status{
+margin-top:18px;
+padding:16px;
+border-radius:18px;
+text-align:center;
+font-size:15px;
+font-weight:bold;
+backdrop-filter:blur(10px);
+transition:.3s;
+}
+
+.sender-status.offline{
+background:rgba(255,0,0,.12);
+border:1px solid rgba(255,0,0,.25);
+color:#ff6b6b;
+}
+
+.sender-status.online{
+background:rgba(0,255,136,.12);
+border:1px solid rgba(0,255,136,.25);
+color:#00ff99;
+}
+
+/* EXEC */
+.exec-btn{
+margin-top:25px;
+width:100%;
+padding:24px;
+border-radius:28px;
+font-size:22px;
+font-weight:bold;
+color:white;
+background:linear-gradient(90deg,#9333ea,#c026d3);
+}
+
+/* CONSOLE */
+.console{
+display:none;
+margin-top:25px;
+padding:20px;
+border-radius:28px;
+background:#050b16;
+border:1px solid rgba(77,163,255,.15);
+overflow:hidden;
+position:relative;
+}
+
+.console::before{
+content:'SYSTEM CONSOLE';
+position:absolute;
+top:0;
+left:0;
+right:0;
+padding:12px;
+background:#081426;
+font-size:13px;
+letter-spacing:2px;
+color:#58b7ff;
+}
+
+.console-content{
+margin-top:45px;
+}
+
+.log{
+padding:10px 0;
+font-size:15px;
+font-family:monospace;
+color:#8aff8a;
+}
+
+/* RESULT */
+.result{
+display:none;
+margin-top:20px;
+padding:20px;
+border-radius:25px;
+background:#081426;
+line-height:1.9;
+}
+
+/* POPUP */
+.popup{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.75);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999999;
+}
+
+.popup-box{
+width:85%;
+max-width:350px;
+padding:35px;
+border-radius:35px;
+background:#081426;
+text-align:center;
+}
+
+.popup-icon{
+font-size:70px;
+margin-bottom:20px;
+}
+
+.popup-title{
+font-size:35px;
+margin-bottom:15px;
+}
+
+.popup-desc{
+opacity:.8;
+line-height:1.8;
+margin-bottom:25px;
+}
+
+.popup-btn{
+width:100%;
+padding:18px;
+border-radius:22px;
+background:linear-gradient(90deg,#4da3ff,#6ec1ff);
+color:white;
+font-size:20px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- COOLDOWN -->
+<div class="cooldown-bar"
+id="cooldownBar">
+
+⏳ Sedang cooldown tunggu 200 detik
+
+</div>
+
+<!-- LOGIN -->
+<div id="loginPage">
+
+<div class="login-box">
+
+<div class="login-title">
+OWNER AKSES
+</div>
+
+<div class="login-sub">
+Masuk ke dashboard
+</div>
+
+<input id="username"
+placeholder="Username">
+<input id="password"
+type="password"
+placeholder="Password">
+
+<button class="login-btn"
+onclick="login()">
+
+➡ MASUK
+
+</button>
+
+</div>
+
+</div>
+
+<!-- HOME -->
+<div id="home">
+
+<div class="topbar">
+
+<div class="user">
+
+<div class="avatar"
+id="avatar">
+
+🙂
+
+</div>
+
+<div>
+
+<div class="user-name"
+id="userName">
+
+USER
+
+</div>
+
+<div class="user-role"
+id="userRole">
+
+SYSTEM ACCESS
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<!-- VIDEO BANNER -->
+<div class="video-wrap">
+
+<div class="video-banner">
+
+<video id="ownerVideo"
+autoplay
+muted
+loop
+playsinline
+<source src="Owner.mp4"
+type="video/mp4">
+
+</video>
+
+<div class="video-shadow"></div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="title">
+⚡ FITUR OWNER
+</div>
+
+<!-- TAB -->
+<div class="tab-wrap">
+
+<div class="tab active"
+id="tabNomor"
+onclick="setTab('nomor')">
+
+📱 BUG NOMOR
+
+</div>
+
+<div class="tab"
+id="tabGroup"
+onclick="setTab('group')">
+
+👥 BUG GROUP
+
+</div>
+
+</div>
+
+<!-- NOMOR -->
+<div class="input-box active"
+id="nomorBox">
+
+<input
+id="targetNumber"
+placeholder="812xxxxxxxx">
+
+</div>
+
+<!-- GROUP -->
+<div class="input-box"
+id="groupBox">
+
+<input
+id="groupLink"
+placeholder="Contoh: https://chat.whatsapp.com/AbCdEfGhIjKlMnOp">
+
+</div>
+
+<!-- BUG -->
+<div class="menu">
+<div>
+🐞 [ DELAY INVISIBLE ]
+</div>
+<div>
+›
+</div>
+</div>
+
+<!-- MODE -->
+<div class="mode-wrap">
+
+<div class="mode"
+id="globalMode"
+onclick="setSender('global')">
+
+🌐 GLOBAL
+
+</div>
+
+<div class="mode active"
+id="privateMode"
+onclick="setSender('private')">
+
+🟣 PRIVATE
+
+</div>
+
+</div>
+
+<!-- STATUS -->
+<div class="sender-status offline"
+id="senderStatus">
+
+🔴 Sender sedang offline
+
+</div>
+
+<!-- EXEC -->
+<button class="exec-btn"
+onclick="executePanel()">
+
+🚀 EXECUTE SYSTEM
+
+</button>
+
+<!-- CONSOLE -->
+<div class="console"
+id="console">
+
+<div class="console-content"
+id="consoleContent">
+
+</div>
+
+</div>
+
+<!-- RESULT -->
+<div class="result"
+id="result"></div>
+
+</div>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup"
+id="popup">
+
+<div class="popup-box">
+
+<div class="popup-icon">
+⚠️
+</div>
+
+<div class="popup-title">
+Akses Ditolak
+</div>
+
+<div class="popup-desc">
+Fitur ini hanya untuk OWNER ACCESS
+</div>
+
+<button class="popup-btn"
+onclick="closePopup()">
+
+OK
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+let akunData=[
+ {user:'Lonerider99',pass:'starlord99',role:'OWNER',online:false},
+ {user:'Bangar',pass:'Bangar09205',role:'OWNER',online:false}, 
+ {user:'Bjorka',pass:'radityafreya2021',role:'OWNER',online:false}, 
+ {user:'zuansuju',pass:'zuan07',role:'OWNER',online:false}, 
+ {user:'Amrol',pass:'AMROLAMROL2006',role:'OWNER',online:false},
+ {user:'ZAKIBOYY',pass:'ZAKIBOYY',role:'OWNER',online:false}, 
+ {user:'Yansss',pass:'gagallogin',role:'OWNER',online:false}
+];
+
+let currentRole="";
+let currentTab="nomor";
+let senderType="private";
+
+let isCooldown=false;
+
+// STATUS REAL TIME
+function updateSenderStatus(){
+
+ let box=
+ document.getElementById("senderStatus");
+
+ // AMBIL WAKTU START
+ let start=
+ localStorage.getItem("senderStart");
+
+ // BELUM ADA
+ if(!start){
+
+  start=Date.now();
+
+  localStorage.setItem(
+  "senderStart",
+  start
+  );
+
+ }
+
+ // HITUNG
+ let sekarang=Date.now();
+
+ let selisih=
+ sekarang - start;
+
+ // 1 JAM
+ if(selisih >= 3600000){
+
+  box.className=
+  "sender-status offline";
+
+  box.innerHTML=
+  "🔴 Sender sedang offline";
+
+ }
+
+ else{
+
+  box.className=
+  "sender-status online";
+
+  box.innerHTML=
+  "🟢 Sender sedang online";
+
+ }
+
+}
+
+// UPDATE
+updateSenderStatus();
+
+// CEK TERUS
+setInterval(updateSenderStatus,1000);
+ 
+// LOGIN
+function login(){
+
+ let u=
+ document.getElementById("username").value;
+
+ let p=
+ document.getElementById("password").value;
+
+ // PLAY VIDEO AUDIO
+let v =
+document.getElementById(
+"ownerVideo"
+);
+
+v.muted=false;
+
+v.volume=1;
+
+v.play();
+ 
+ // CEK AKUN
+ let cek=
+ akunData.find(a =>
+  a.user===u &&
+  a.pass===p
+ );
+
+ // SALAH
+ if(!cek){
+
+  alert("Username / Password salah");
+
+  return;
+
+ }
+
+// CEK DEVICE
+let sesi=
+localStorage.getItem(
+"login_"+cek.user
+);
+
+// SUDAH LOGIN
+if(sesi=="online"){
+
+ alert(
+ "User login di perangkat lain"
+ );
+
+ return;
+
+}
+
+// SET ONLINE
+localStorage.setItem(
+"login_"+cek.user,
+"online"
+);
+
+ // SET ONLINE
+ cek.online=true;
+
+ currentRole=cek.role;
+
+ // MASUK
+ document.getElementById("loginPage")
+ .style.display="none";
+
+ document.getElementById("home")
+ .style.display="block";
+
+ // USER
+ document.getElementById("userName")
+ .innerHTML=cek.user;
+
+ // ROLE
+ if(cek.role=="OWNER"){
+
+ document.getElementById("avatar")
+.innerHTML=
+'<img src="Owner.jpg" class="owner-avatar">';
+
+  document.getElementById("userRole")
+  .innerHTML="OWNER ACCESS";
+
+ }
+
+ else if(cek.role=="VIP"){
+
+  document.getElementById("avatar")
+  .innerHTML="💎";
+
+  document.getElementById("userRole")
+  .innerHTML="VIP ACCESS";
+
+ }
+
+ else if(cek.role=="RESELLER"){
+
+  document.getElementById("avatar")
+  .innerHTML="🚀";
+
+  document.getElementById("userRole")
+  .innerHTML="RESELLER ACCESS";
+
+ }
+
+ else{
+
+  document.getElementById("avatar")
+  .innerHTML="🙂";
+
+  document.getElementById("userRole")
+  .innerHTML="MEMBER ACCESS";
+
+ }
+
+}
+
+// TAB
+function setTab(tab){
+
+ currentTab=tab;
+
+ document.getElementById("tabNomor").classList.remove("active");
+ document.getElementById("tabGroup").classList.remove("active");
+
+ document.getElementById("nomorBox").classList.remove("active");
+ document.getElementById("groupBox").classList.remove("active");
+
+ if(tab=="nomor"){
+  document.getElementById("tabNomor").classList.add("active");
+  document.getElementById("nomorBox").classList.add("active");
+ }
+
+ else{
+  document.getElementById("tabGroup").classList.add("active");
+  document.getElementById("groupBox").classList.add("active");
+ }
+
+}
+
+// SENDER
+function setSender(type){
+
+ senderType=type;
+
+ document.getElementById("globalMode").classList.remove("active");
+ document.getElementById("privateMode").classList.remove("active");
+
+ if(type=="global"){
+  document.getElementById("globalMode").classList.add("active");
+ }
+
+ else{
+  document.getElementById("privateMode").classList.add("active");
+ }
+
+}
+
+// STATUS LOOP
+function updateSenderStatus(){
+
+ let box=
+ document.getElementById("senderStatus");
+
+ // ONLINE
+ box.className=
+ "sender-status online";
+
+ box.innerHTML=
+ "🟢 Sender sedang online";
+
+ // 1 JAM => OFFLINE
+ setTimeout(()=>{
+
+  box.className=
+  "sender-status offline";
+
+  box.innerHTML=
+  "🔴 Sender sedang offline";
+
+ },3600000);
+
+}
+
+// START
+updateSenderStatus();
+
+// LOOP TERUS
+setInterval(()=>{
+
+ updateSenderStatus();
+
+},7200000);
+
+// EXECUTE
+function executePanel(){
+
+ // MASIH COOLDOWN
+ if(isCooldown){
+
+  return;
+
+ }
+
+ // OWNER
+ if(currentRole!="OWNER"){
+
+  document.getElementById("popup")
+  .style.display="flex";
+
+  return;
+
+ }
+
+ let text="";
+
+ if(currentTab=="nomor"){
+
+  let nomor=document.getElementById("targetNumber").value;
+
+  if(!nomor.startsWith("8")){
+
+   alert("Nomor wajib diawali angka 8");
+
+   return;
+
+  }
+
+  text="📱 Target: "+nomor;
+
+ }
+
+ else{
+
+  let group=document.getElementById("groupLink").value;
+
+  if(group.trim()==""){
+
+   alert("Link group wajib diisi");
+
+   return;
+
+  }
+
+  text="👥 Group: "+group;
+
+ }
+
+// AKTIFKAN COOLDOWN
+isCooldown=true;
+
+let waktu=200;
+
+let bar=
+document.getElementById("cooldownBar");
+
+let btn=
+document.querySelector(".exec-btn");
+
+// DISABLE BUTTON
+btn.disabled=true;
+
+btn.style.opacity=".5";
+
+btn.innerHTML=
+"⏳ SYSTEM COOLDOWN";
+
+// SHOW
+bar.style.display="block";
+
+// TIMER
+let cd=setInterval(()=>{
+
+ bar.innerHTML=
+ "⏳ Cooldown " + waktu +
+ " detik";
+
+ waktu--;
+
+ // SELESAI
+ if(waktu<0){
+
+  clearInterval(cd);
+
+  isCooldown=false;
+
+  bar.style.display="none";
+
+  btn.disabled=false;
+
+  btn.style.opacity="1";
+
+  btn.innerHTML=
+  "🚀 EXECUTE SYSTEM";
+
+ }
+
+},1000);
+
+ // CONSOLE
+ document.getElementById("console").style.display="block";
+
+ let c=document.getElementById("consoleContent");
+
+ c.innerHTML="";
+
+ let logs=[
+ "⚡ Initializing system...",
+ "🛰 Connecting secure network...",
+ "📡 Sending encrypted request...",
+ "🔐 Validating owner access...",
+ "⏳ Processing invisible delay...",
+ "✅ System connected successfully"
+ ];
+
+ let i=0;
+
+ let inter=setInterval(()=>{
+
+  if(i<logs.length){
+
+   c.innerHTML +=
+   `<div class='log'>${logs[i]}</div>`;
+
+   i++;
+
+  }
+
+  else{
+
+   clearInterval(inter);
+
+   document.getElementById("result").style.display="block";
+
+   document.getElementById("result").innerHTML=
+   `
+   ⚡ OWNER ACCESS VERIFIED<br><br>
+
+   ${text}<br>
+   🟣 Delay: Invisible<br>
+   📡 Sender: ${senderType.toUpperCase()}<br>
+   ✅ SYSTEM READY
+   `;
+
+   window.open(
+   "https://wa.me/6285283786794?text=" +
+   encodeURIComponent(
+   "⚡ OWNER ACCESS VERIFIED\n\n" +
+   text +
+   "\n🟣 Delay: Invisible" +
+   "\n📡 Sender: " + senderType.toUpperCase() +
+   "\n✅ SYSTEM READY"
+   )
+   );
+
+  }
+
+ },1200);
+
+}
+
+// CLOSE
+function closePopup(){
+
+ document.getElementById("popup").style.display="none";
+
+}
+
+function playVideoSound(){
+
+ let v=
+ document.getElementById(
+ "ownerVideo"
+ );
+
+ // UNMUTE
+ v.muted=false;
+
+ // FULL VOLUME
+ v.volume=1;
+
+ // PLAY
+ v.play();
+
+ }
+
+ // AUTO LOGOUT
+window.addEventListener(
+"beforeunload",
+()=>{
+
+ akunData.forEach(a=>{
+
+  localStorage.removeItem(
+  "login_"+a.user
+  );
+
+ });
+
+});
+ 
+</script>
+
+</body>
+</html>
