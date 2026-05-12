@@ -767,48 +767,12 @@ v.volume=1;
 
 v.play();
  
- // CEK AKUN
- let valid = akunList.find(a =>
- a.user === u &&
- a.pass === p
-);
- 
- // SALAH
- if(!cek){
+  // USER
+ document.getElementById("userName")
+ .innerHTML=cek.user;
 
-  alert("Username / Password salah");
-
-  return;
-
- }
-
-// CEK DEVICE
-let sesi=
-localStorage.getItem(
-"login_"+cek.user
-);
-
-// SUDAH LOGIN
-if(sesi=="online"){
-
- alert(
- "User login di perangkat lain"
- );
-
- return;
-
-}
-
-// SET ONLINE
-localStorage.setItem(
-"login_"+cek.user,
-"online"
-);
-
- // SET ONLINE
- cek.online=true;
-
- currentRole=cek.role;
+ // ROLE
+ if(cek.role=="OWNER"){
 
  // MASUK
  document.getElementById("loginPage")
