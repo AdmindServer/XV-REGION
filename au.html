@@ -768,11 +768,10 @@ v.volume=1;
 v.play();
  
  // CEK AKUN
- let cek=
- akunData.find(a =>
-  a.user===u &&
-  a.pass===p
- );
+ let valid = akunList.find(a =>
+ a.user === u &&
+ a.pass === p
+);
  
  // SALAH
  if(!cek){
