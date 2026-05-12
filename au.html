@@ -768,12 +768,15 @@ v.volume=1;
 
 v.play();
  
- // CEK AKUN
- let valid = akunData.find(a =>
- a.user === u &&
- a.pass === p
+// CEK AKUN
+let u = user.value.trim().toLowerCase();
+let p = pass.value.trim().toLowerCase();
+
+let valid = akunList.find(a =>
+ a.user.toLowerCase() === u &&
+ a.pass.toLowerCase() === p
 );
- 
+
  // SALAH
  if(!cek){
 
