@@ -683,11 +683,6 @@ OK
 <script src="list.js?v=99"></script>
 
 <script>
-console.log(window.akunData);
-alert(JSON.stringify(window.akunData));
-</script>
-
-<script>
 let currentRole="";
 let currentTab="nomor";
 let senderType="private";
@@ -774,11 +769,11 @@ v.play();
  
  // CEK AKUN
  let cek=
- window.akunData.find(a =>
+ akunData.find(a =>
   a.user===u &&
   a.pass===p
  );
-
+ 
  // SALAH
  if(!cek){
 
