@@ -756,10 +756,10 @@ let u = document.getElementById("username").value.trim();
 let p = document.getElementById("password").value.trim();
 
 let valid = akunList.find(a =>
-a.user.trim() === u &&
-a.pass.trim() === p
+  a.user.trim().toLowerCase() === u.trim().toLowerCase() &&
+  a.pass.trim().toLowerCase() === p.trim().toLowerCase()
 );
-
+  
 if(valid){
 
 let sesi =
