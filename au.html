@@ -747,114 +747,78 @@ updateSenderStatus();
 // CEK TERUS
 setInterval(updateSenderStatus,1000);
 
- // CEK Akun
+ <script>
+
 function login() {
 
 let u = document.getElementById("username").value.trim();
 let p = document.getElementById("password").value.trim();
 
 let valid = akunList.find(a =>
-a.user === u &&
-a.pass === p
+a.user.trim() === u &&
+a.pass.trim() === p
 );
 
 if(valid){
 
-alert("Login berhasil");
-
-localStorage.setItem("loginUser", valid.user);
-
-window.location.href = "dashboard.html";
-
-}else{
-
-alert("Username / Password salah");
-
-}
-
- }
 // CEK DEVICE
-let sesi=
-localStorage.getItem(
-"login_"+cek.user
+let sesi = localStorage.getItem(
+"login_" + valid.user
 );
 
-// SUDAH LOGIN
-if(sesi=="online"){
+if(sesi == "online"){
 
- alert(
- "User login di perangkat lain"
- );
-
- return;
+alert("User login di perangkat lain");
+return;
 
 }
 
 // SET ONLINE
 localStorage.setItem(
-"login_"+cek.user,
+"login_" + valid.user,
 "online"
 );
 
- // SET ONLINE
- cek.online=true;
+valid.online = true;
 
- currentRole=cek.role;
+currentRole = valid.role;
 
- // MASUK
- document.getElementById("loginPage")
- .style.display="none";
+// MASUK
+document.getElementById("loginPage")
+.style.display = "none";
 
- document.getElementById("home")
- .style.display="block";
+document.getElementById("home")
+.style.display = "block";
 
- // USER
- document.getElementById("userName")
- .innerHTML=cek.user;
+// USER
+document.getElementById("userName")
+.innerHTML = valid.user;
 
- // ROLE
- if(cek.role=="OWNER"){
+// ROLE
+if(valid.role == "OWNER"){
 
- document.getElementById("avatar")
-.innerHTML=
+document.getElementById("avatar")
+.innerHTML =
 '<img src="Owner.jpg" class="owner-avatar">';
 
-  document.getElementById("userRole")
-  .innerHTML="OWNER ACCESS";
-
- }
-
- else if(cek.role=="VIP"){
-
-  document.getElementById("avatar")
-  .innerHTML="💎";
-
-  document.getElementById("userRole")
-  .innerHTML="VIP ACCESS";
-
- }
-
- else if(cek.role=="RESELLER"){
-
-  document.getElementById("avatar")
-  .innerHTML="🚀";
-
-  document.getElementById("userRole")
-  .innerHTML="RESELLER ACCESS";
-
- }
-
- else{
-
-  document.getElementById("avatar")
-  .innerHTML="🙂";
-
-  document.getElementById("userRole")
-  .innerHTML="MEMBER ACCESS";
-
- }
+document.getElementById("userRole")
+.innerHTML = "OWNER ACCESS";
 
 }
+
+else{
+
+document.getElementById("avatar")
+.innerHTML = "🙂";
+
+document.getElementById("userRole")
+.innerHTML = valid.role + " ACCESS";
+
+}
+
+}else{
+
+alert("Username / Password salah");
 
 // TAB
 function setTab(tab){
