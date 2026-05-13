@@ -769,74 +769,90 @@ updateSenderStatus();
 // CEK TERUS
 setInterval(updateSenderStatus,1000);
 
- function login() {
+ function login(){
 
-let u = document.getElementById("username").value.trim();
-let p = document.getElementById("password").value.trim();
+let u =
+document
+.getElementById("username")
+.value
+.replace(/\s+/g,'')
+.toLowerCase();
 
-let valid = akunList.find(a =>
-  a.user.trim().toLowerCase() === u.trim().toLowerCase() &&
-  a.pass.trim().toLowerCase() === p.trim().toLowerCase()
-);
-  
-if(valid){
+let p =
+document
+.getElementById("password")
+.value
+.replace(/\s+/g,'')
+.toLowerCase();
 
-let sesi =
-localStorage.getItem(
-"login_" + valid.user
-);
+let valid = null;
 
-if(sesi == "online"){
+for(let i=0;i<akunList.length;i++){
 
-alert("User login di perangkat lain");
-return;
+ let user =
+ akunList[i]
+ .user
+ .replace(/\s+/g,'')
+ .toLowerCase();
+
+ let pass =
+ akunList[i]
+ .pass
+ .replace(/\s+/g,'')
+ .toLowerCase();
+
+ if(
+  user == u &&
+  pass == p
+ ){
+
+  valid = akunList[i];
+
+  break;
+
+ }
 
 }
 
-localStorage.setItem(
-"login_" + valid.user,
-"online"
-);
+if(!valid){
 
-valid.online = true;
+ alert(
+ "Username / Password salah"
+ );
 
-currentRole = valid.role;
+ return;
 
-document.getElementById("loginPage")
-.style.display = "none";
+}
 
-document.getElementById("home")
-.style.display = "block";
+currentRole =
+valid.role;
 
-document.getElementById("userName")
-.innerHTML = valid.user;
+document
+.getElementById("loginPage")
+.style.display =
+"none";
 
-if(valid.role == "OWNER"){
+document
+.getElementById("home")
+.style.display =
+"block";
 
-document.getElementById("avatar")
+document
+.getElementById("userName")
+.innerHTML =
+valid.user;
+
+document
+.getElementById("userRole")
+.innerHTML =
+valid.role + " ACCESS";
+
+document
+.getElementById("avatar")
 .innerHTML =
 '<img src="Owner.jpg" class="owner-avatar">';
 
-document.getElementById("userRole")
-.innerHTML = "OWNER ACCESS";
-
-}else{
-
-document.getElementById("avatar")
-.innerHTML = "🙂";
-
-document.getElementById("userRole")
-.innerHTML = valid.role + " ACCESS";
-
-}
-
-}else{
-
-alert("Username / Password salah");
-
-}
-
-}
+  }
 
 // TAB
 function setTab(tab){
