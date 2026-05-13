@@ -769,19 +769,19 @@ v.volume=1;
 v.play();
  
 // CEK AKUN
-let valid = akunList.find(a =>
- a.user.toLowerCase() === u &&
- a.pass.toLowerCase() === p
+let cek = akunList.find(a =>
+ a.user.toLowerCase() === u.toLowerCase() &&
+ a.pass.toLowerCase() === p.toLowerCase()
 );
 
- // SALAH
- if(!cek){
+// SALAH
+if(!cek){
 
-  alert("Username / Password salah");
+ alert("Username / Password salah");
 
-  return;
+ return;
 
- }
+}
 
 // CEK DEVICE
 let sesi=
@@ -1140,7 +1140,7 @@ window.addEventListener(
 "beforeunload",
 ()=>{
 
- akunData.forEach(a=>{
+ akunList.forEach(a=>{
 
   localStorage.removeItem(
   "login_"+a.user
