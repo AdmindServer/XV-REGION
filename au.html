@@ -770,8 +770,8 @@ v.play();
  
 // CEK AKUN
 let cek = akunList.find(a =>
- a.user.toLowerCase() === u.toLowerCase() &&
- a.pass.toLowerCase() === p.toLowerCase()
+ a.user.trim().toLowerCase() === u.trim().toLowerCase() &&
+ a.pass.trim().toLowerCase() === p.trim().toLowerCase()
 );
 
 // SALAH
