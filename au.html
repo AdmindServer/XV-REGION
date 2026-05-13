@@ -747,9 +747,7 @@ updateSenderStatus();
 // CEK TERUS
 setInterval(updateSenderStatus,1000);
 
- <script>
-
-function login() {
+ function login() {
 
 let u = document.getElementById("username").value.trim();
 let p = document.getElementById("password").value.trim();
@@ -761,8 +759,8 @@ a.pass.trim() === p
 
 if(valid){
 
-// CEK DEVICE
-let sesi = localStorage.getItem(
+let sesi =
+localStorage.getItem(
 "login_" + valid.user
 );
 
@@ -773,7 +771,6 @@ return;
 
 }
 
-// SET ONLINE
 localStorage.setItem(
 "login_" + valid.user,
 "online"
@@ -783,18 +780,15 @@ valid.online = true;
 
 currentRole = valid.role;
 
-// MASUK
 document.getElementById("loginPage")
 .style.display = "none";
 
 document.getElementById("home")
 .style.display = "block";
 
-// USER
 document.getElementById("userName")
 .innerHTML = valid.user;
 
-// ROLE
 if(valid.role == "OWNER"){
 
 document.getElementById("avatar")
@@ -804,9 +798,7 @@ document.getElementById("avatar")
 document.getElementById("userRole")
 .innerHTML = "OWNER ACCESS";
 
-}
-
-else{
+}else{
 
 document.getElementById("avatar")
 .innerHTML = "🙂";
@@ -819,6 +811,10 @@ document.getElementById("userRole")
 }else{
 
 alert("Username / Password salah");
+
+}
+
+}
 
 // TAB
 function setTab(tab){
