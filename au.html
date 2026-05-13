@@ -747,42 +747,32 @@ updateSenderStatus();
 // CEK TERUS
 setInterval(updateSenderStatus,1000);
 
-// LOGIN
-function login(){
+ // CEK Akun
+function login() {
 
- let u=
- document.getElementById("username").value;
+let u = document.getElementById("username").value.trim();
+let p = document.getElementById("password").value.trim();
 
- let p=
- document.getElementById("password").value;
-
- // PLAY VIDEO AUDIO
-let v =
-document.getElementById(
-"ownerVideo"
+let valid = akunList.find(a =>
+a.user === u &&
+a.pass === p
 );
 
-v.muted=false;
+if(valid){
 
-v.volume=1;
+alert("Login berhasil");
 
-v.play();
- 
-// CEK AKUN
-let cek = akunList.find(a =>
- a.user.trim().toLowerCase() === u.trim().toLowerCase() &&
- a.pass.trim().toLowerCase() === p.trim().toLowerCase()
-);
+localStorage.setItem("loginUser", valid.user);
 
-// SALAH
-if(!cek){
+window.location.href = "dashboard.html";
 
- alert("Username / Password salah");
+}else{
 
- return;
+alert("Username / Password salah");
 
 }
 
+ }
 // CEK DEVICE
 let sesi=
 localStorage.getItem(
