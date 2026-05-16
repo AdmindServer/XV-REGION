@@ -365,6 +365,19 @@ onclick="generateCode()"
 PAIRING SENDER
 </button>
 
+<!-- STATUS -->
+<div
+id="senderStatus"
+style="
+margin-top:15px;
+color:#00ff88;
+font-size:15px;
+text-align:center;
+font-family:monospace;
+">
+🔴 Sender Belum Aktif
+</div>
+  
 <div class="status">
 Status : Waiting Pairing...
 </div>
@@ -498,6 +511,21 @@ await fetch(
 let res =
 await req.json();
 
+  if(
+res.code &&
+res.code !== "ERROR"
+){
+
+document
+.getElementById(
+"senderStatus"
+)
+.innerHTML =
+
+"🟢 Sender Aktif : " + nomor;
+
+}
+  
 /* UPDATE CODE */
 
 document
