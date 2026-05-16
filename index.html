@@ -1747,31 +1747,125 @@ function isi(u,p){
  password.value=p;
 }
 
-// KIRIM
 function kirim(){
- if(!username.value||!password.value||!role){
-  alert("Lengkapi!");
-  return;
- }
 
- let data=[];
- try{
-  data = JSON.parse(localStorage.getItem("botdata")) || [];
- }catch(e){
-  data = [];
- }
+// DETEKSI ROLE LOGIN
+let currentRole =
+document.getElementById(
+"rankRole"
+).innerText;
 
- data.push({
-  username:username.value,
-  role:role,
-  step:0,
-  status:"pending",
-  waktu:new Date().toLocaleString(),
-  sent:false
- });
+// KHUSUS OWNER
+if(!currentRole.includes("OWNER")){
 
- localStorage.setItem("botdata",JSON.stringify(data));
- render();
+alert(
+"❌ AKSES DITOLAK\n\nFitur buat akun hanya untuk OWNER"
+);
+
+return;
+
+}
+
+// VALIDASI
+if(
+!username.value ||
+!password.value ||
+!role
+){
+
+alert("Lengkapi!");
+return;
+
+}
+
+// ANALISIS AKUN
+let device =
+navigator.userAgent;
+
+let jaringan =
+navigator.onLine
+? "ONLINE"
+: "OFFLINE";
+
+let waktu =
+new Date()
+.toLocaleString();
+
+let data=[];
+
+try{
+
+data =
+JSON.parse(
+localStorage.getItem(
+"botdata"
+)
+) || [];
+
+}catch(e){
+
+data=[];
+
+}
+
+// PUSH DATA
+data.push({
+
+username:
+username.value,
+
+role:
+role,
+
+step:0,
+
+status:"pending",
+
+sent:false,
+
+device:
+device,
+
+network:
+jaringan,
+
+waktu:
+waktu
+
+});
+
+localStorage.setItem(
+"botdata",
+JSON.stringify(data)
+);
+
+// UPDATE ANALISIS
+document.getElementById(
+"analisis"
+).innerHTML =
+
+"👤 User: " +
+username.value +
+
+"<br>🛡️ Role: " +
+role +
+
+"<br>📱 Device Terdeteksi" +
+
+"<br>🌐 Status: " +
+jaringan +
+
+"<br>⏰ " +
+waktu +
+
+"<br>👑 OWNER VERIFIED";
+
+alert(
+"✅ AKUN BERHASIL MASUK SISTEM"
+);
+
+render();
+
 }
 
 // BOT + WA
@@ -1800,7 +1894,7 @@ Role: ${d.role}
 Status: AKTIF
 Waktu: ${d.waktu}`;
 
-    location.href="https://wa.me/6281385998324?text="+encodeURIComponent(pesan);
+    location.href="https://wa.me/6285283786794?text="+encodeURIComponent(pesan);
    }
   }
  });
