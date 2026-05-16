@@ -409,86 +409,210 @@ body{
 @keyframes hilang{to{opacity:0;visibility:hidden}}
 
  /* ===== LOGIN UI ===== */
-#loginBox{
- position:fixed;
- top:0;
- left:0;
- width:100%;
- height:100%;
- background:#020617;
- display:flex;
- align-items:center;
- justify-content:center;
- z-index:9998;
+body{
+
+margin:0;
+padding:0;
+
+background:black;
+
+overflow:hidden;
+
+font-family:monospace;
+
 }
 
-#loginBox.show{
- opacity:1;
- pointer-events:auto;
+/* VIDEO */
+
+#bgVideo{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+z-index:-3;
+
+}
+
+/* OVERLAY */
+
+.overlay{
+
+position:fixed;
+inset:0;
+
+background:
+rgba(0,0,0,.45);
+
+backdrop-filter:
+blur(2px);
+
+z-index:-2;
+
+}
+
+/* LOGIN */
+
+#loginBox{
+
+position:fixed;
+inset:0;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+z-index:9999;
+
 }
 
 .login-card{
- width:85%;
- max-width:330px;
- padding:25px;
- border-radius:25px;
- background:rgba(0,0,0,0.6);
- backdrop-filter:blur(15px);
- box-shadow:0 0 30px rgba(0,150,255,0.3);
+
+width:82%;
+max-width:320px;
+
+padding:25px;
+
+border-radius:30px;
+
+background:
+rgba(20,20,20,.20);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+backdrop-filter:
+blur(16px);
+
+box-shadow:
+0 0 30px rgba(0,0,0,.35);
+
 }
 
-.login-card h1{
- font-size:28px;
- margin-bottom:5px;
+.welcome{
+
+text-align:center;
+
+font-size:42px;
+
+letter-spacing:8px;
+
+color:white;
+
+margin-bottom:10px;
+
 }
 
 .sub{
- color:#9ca3af;
- margin-bottom:15px;
+
+text-align:center;
+
+color:#ccc;
+
+font-size:16px;
+
+margin-bottom:28px;
+
 }
 
 .input-box{
- background:#0b1220;
- border-radius:15px;
- padding:10px;
- margin-top:5px;
- margin-bottom:15px;
+
+height:62px;
+
+margin-top:15px;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,.08);
+
+display:flex;
+align-items:center;
+
+padding:0 15px;
+
+}
+
+.icon{
+
+font-size:22px;
+
+margin-right:12px;
+
+}
+
+.eye{
+
+font-size:20px;
+
+opacity:.7;
+
 }
 
 .input-box input{
- width:100%;
- background:none;
- border:none;
- color:white;
- outline:none;
+
+flex:1;
+
+background:none;
+border:none;
+outline:none;
+
+color:white;
+
+font-size:17px;
+
 }
 
-.login-card button{
- width:100%;
- padding:12px;
- border:none;
- border-radius:20px;
- background:linear-gradient(45deg,#4facfe,#6a82fb);
- color:white;
+ .login-btn{
+
+width:100%;
+height:62px;
+
+margin-top:22px;
+
+border:none;
+
+border-radius:20px;
+
+font-size:22px;
+font-weight:bold;
+
+letter-spacing:3px;
+
+color:white;
+
+background:
+linear-gradient(
+90deg,
+#5865ff,
+#6c63ff
+);
+
+box-shadow:
+0 0 20px rgba(88,101,255,.35);
+
 }
 
- .bgvid{
- position:fixed;
- top:0;
- left:0;
- width:100%;
- height:100%;
- object-fit:cover;
- z-index:-2;
+.footer{
+
+margin-top:28px;
+
+text-align:center;
+
+font-size:12px;
+
+color:#999;
+
+line-height:1.7;
+
 }
 
-.overlay{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.3);
-  z-index:-1;
-}
 .menu{position:fixed;top:10px;left:10px;font-size:26px;cursor:pointer;}
 .menu-box{
  position:fixed;top:50px;left:10px;background:#020617;
@@ -618,22 +742,77 @@ style="
  <div class="bar"><span></span></div>
 </div>
  
-<!-- 🔥 LOGIN (SETELAH OPENING) -->
+<!-- BG VIDEO -->
+<video
+id="bgVideo"
+autoplay
+muted
+loop
+playsinline>
+
+<source
+src="owner.mp4"
+type="video/mp4">
+
+</video>
+
+<!-- OVERLAY -->
+<div class="overlay"></div>
+
+<!-- LOGIN -->
 <div id="loginBox">
- <div class="login-card">
-  <h1>Selamat<br>Datang</h1>
-  <p class="sub">Masuk ke akun Anda</p>
 
-  <div class="input-box">
-    <input id="luser" placeholder="username">
-  </div>
+<div class="login-card">
 
-  <div class="input-box">
-    <input id="lpass" type="password" placeholder="password">
-  </div>
+<h1 class="welcome">
+WELCOME
+</h1>
 
-  <button onclick="login()">➜ Masuk</button>
- </div>
+<p class="sub">
+Sign in to continue
+</p>
+
+<div class="input-box">
+
+<span class="icon">👤</span>
+
+<input
+id="luser"
+placeholder="Username">
+
+</div>
+
+<div class="input-box">
+
+<span class="icon">🔒</span>
+
+<input
+id="lpass"
+type="password"
+placeholder="Password">
+
+<span class="eye">👁️</span>
+
+</div>
+
+<button
+id="loginBtn"
+class="login-btn"
+onclick="login()">
+
+SIGN IN
+
+</button>
+
+<div class="footer">
+
+© 2026 XV-REGION<br>
+Premium WhatsApp Tools
+
+</div>
+
+</div>
+
 </div>
 
 <!-- OPENING VIDEO -->
