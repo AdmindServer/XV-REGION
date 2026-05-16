@@ -424,6 +424,37 @@ body{
 @keyframes hilang{to{opacity:0;visibility:hidden}}
 
  /* ===== LOGIN UI ===== */
+#bgVideo{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+z-index:-3;
+
+}
+
+.overlay{
+
+position:fixed;
+inset:0;
+
+background:
+rgba(0,0,0,.45);
+
+backdrop-filter:
+blur(2px);
+
+z-index:-2;
+
+}
+ 
 #loginBox{
 
 position:fixed;
@@ -501,6 +532,19 @@ display:flex;
 align-items:center;
 
 padding:0 15px;
+
+}
+
+ body{
+
+margin:0;
+padding:0;
+
+background:black;
+
+overflow:hidden;
+
+font-family:monospace;
 
 }
 
