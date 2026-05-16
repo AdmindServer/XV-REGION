@@ -462,22 +462,15 @@ return;
 
 }
 
-try{
-
-let req =
-await fetch(
-"http://127.0.0.1:3000/pair?no="+nomor
-)
-
-let res =
-await req.json();
+/* POPUP LANGSUNG */
 
 document
 .getElementById(
-"pairCode"
+"popup"
 )
-.innerHTML =
-res.code;
+.classList.add(
+"show"
+);
 
 document
 .getElementById(
@@ -488,23 +481,46 @@ document
 
 document
 .getElementById(
-"popup"
+"pairCode"
 )
-.classList.add(
-"show"
+.innerHTML =
+"LOADING...";
+
+try{
+
+let req =
+await fetch(
+
+"http://127.0.0.1:3000/pair?no="+nomor
+
 );
+
+let res =
+await req.json();
+
+/* UPDATE CODE */
+
+document
+.getElementById(
+"pairCode"
+)
+.innerHTML =
+res.code;
 
 }catch(err){
 
-alert(
-"Backend offline!"
-);
+document
+.getElementById(
+"pairCode"
+)
+.innerHTML =
+"ERROR";
 
 console.log(err);
 
 }
 
-}
+  }
 
 function closePopup(){
 
