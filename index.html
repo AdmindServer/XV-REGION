@@ -1698,6 +1698,7 @@ let akunData=[
   { user: 'BananaYellow', pass: 'Qxxxxxx',role:'OWNER'}, 
   { user: 'Foxxx', pass: 'Mxxxxxx',role:'VIP'}
   ];
+let currentLoginRole = "";
 // LOGIN
 function login(){
 
@@ -1845,12 +1846,10 @@ function kirim(){
 
 // DETEKSI ROLE LOGIN
 let currentRole =
-document.getElementById(
-"rankRole"
-).innerText;
+currentLoginRole;
 
 // KHUSUS OWNER
-if(!currentRole.includes("OWNER")){
+if(currentRole != "OWNER"){
 
 alert(
 "❌ AKSES DITOLAK\n\nFitur buat akun hanya untuk OWNER"
